@@ -2,6 +2,8 @@ package com.wellsfargo.counselor.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 public class Portfolio {
 
@@ -11,6 +13,9 @@ public class Portfolio {
 
     @Column(nullable = false)
     private String portfolioName;
+
+    @Column(nullable = false)
+    private LocalDate creationDate;
 
     @JoinColumn(nullable = false)
     @ManyToOne
@@ -36,6 +41,15 @@ public class Portfolio {
     private void setPortfolioName(String portfolioName) {
         this.portfolioName = portfolioName;
     }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
 
     private Client getClient() {
         return client;
